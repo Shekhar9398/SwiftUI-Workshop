@@ -10,64 +10,79 @@ import SwiftUI
 struct HomeScreen: View {
     
     var body: some View {
-        ZStack{
+        ZStack {
             
-            Color.mint.opacity(0.1)
+            // MARK: - Background
+            AppColors.lightGray
+                .ignoresSafeArea()
             
-            VStack(alignment: .leading){
+            VStack(alignment: .leading, spacing: 20) {
+                
+                // MARK: - Vertical List Title
                 Text("Vertical List")
-                    .foregroundStyle(.purple)
+                    .foregroundStyle(AppColors.softIndigo)
                     .font(.custom("verdana", size: 24))
                     .bold()
                 
-                
+                // MARK: - Vertical List Card
                 List(MockData.patientNames, id: \.self) { patient in
-                        Text("\(patient)")
-                            .padding(.horizontal)
-                            .frame(maxWidth: .infinity)
-                            .foregroundStyle(.indigo)
-                            .bold()
-                            .font(.custom("verdana", size: 20))
-                            .listRowBackground(Color.clear)
-                            .listRowSeparator(.hidden)
+                    Text(patient)
+                        .padding()
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .foregroundStyle(AppColors.primaryText)
+                        .font(.custom("verdana", size: 18))
+                        .background(AppColors.cardSoft)
+                        .cornerRadius(12)
+                        .listRowBackground(Color.clear)
+                        .listRowSeparator(.hidden)
                 }
-                .listStyle(.insetGrouped)
+                .listStyle(.plain)
                 .scrollContentBackground(.hidden)
-                .background(Color.clear)
-                .cornerRadius(40)
+                .background(AppColors.cardLight)
+                .cornerRadius(20)
                 
-                HStack{
-                    VStack (alignment: .leading){
-                        Text("Horizontal List")
-                            .foregroundStyle(.purple)
-                            .font(.custom("verdana", size: 24))
-                            .bold()
-                        
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 12) {
-                                ForEach(MockData.iconNames, id: \.self) { icon in
-                                    Image(systemName: "\(icon)")
+                // MARK: - Horizontal Section
+                VStack(alignment: .leading, spacing: 12) {
+                    
+                    Text("Horizontal List")
+                        .foregroundStyle(AppColors.softViolet)
+                        .font(.custom("verdana", size: 24))
+                        .bold()
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                        HStack(spacing: 16) {
+                            
+                            ForEach(Array(MockData.iconNames.enumerated()), id: \.element) { index, icon in
+                                
+                                let colors = AppColors.allColors
+                                let color = colors[index % colors.count]
+                                
+                                VStack {
+                                    Image(systemName: icon)
                                         .resizable()
-                                        .frame(width: 50, height: 50)
-                                        .padding()
-                                        .foregroundStyle(.indigo)
+                                        .scaledToFit()
+                                        .frame(width: 30, height: 30)
+                                        .padding(20)
+                                        .background(color.opacity(0.15))
+                                        .foregroundStyle(color)
+                                        .clipShape(RoundedRectangle(cornerRadius: 16))
                                 }
                             }
-                            .padding(.horizontal)
                         }
+                        .padding(.horizontal)
                     }
-                    .padding(.horizontal)
                 }
-                .frame(height: 200)
-                .cornerRadius(40)
+                .padding()
+                .background(AppColors.cardLight)
+                .cornerRadius(20)
+                
+                Spacer()
             }
             .padding(.horizontal)
-            .padding(.vertical, 80)
+            .padding(.top, 80)
+            .ignoresSafeArea()
         }
         .ignoresSafeArea()
-        
-        
-        
     }
 }
 

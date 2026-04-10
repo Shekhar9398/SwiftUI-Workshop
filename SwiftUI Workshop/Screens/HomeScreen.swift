@@ -1,6 +1,6 @@
 //
 //  HomeScreen.swift
-//  NewMacApp
+//  SwiftUI Workshop
 //
 //  Created by Mac on 09/04/26.
 //

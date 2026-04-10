@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  NewMacApp
+//  SwiftUI Workshop
 //
 //  Created by Mac on 08/04/26.
 //

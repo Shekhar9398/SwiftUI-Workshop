@@ -1,2 +1,2 @@
-# New-Mac-App
+# SwiftUI Workshop
 Practice swiftUI app

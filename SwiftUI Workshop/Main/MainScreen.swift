@@ -19,6 +19,15 @@ struct MainScreen: View {
                 .tabItem {
                     Label("Messages", systemImage: "message")
                 }
+            
+            ClinicalQuestionScreen()
+                .tabItem {
+                    Label("Clinical Q", systemImage: "book")
+                }
         }
     }
+}
+
+#Preview {
+    MainScreen()
 }

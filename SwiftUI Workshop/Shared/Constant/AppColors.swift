@@ -9,7 +9,24 @@ import SwiftUI
 
 struct AppColors {
     
-    // MARK: - Brand / Primary
+    // MARK: - Theme Colors
+    static let themeLightCyan = Color(hex: "#B8E3E9")
+    static let themeLightSlate = Color(hex: "#93B1B5")
+    static let themeTeal = Color(hex: "#4F7C82")
+    static let themeDarkSlate = Color(hex: "#0B2E33")
+    
+    // MARK: - Theme
+    struct Theme {
+        static let background = Color(hex: "#F9FAFB") // general light bg
+        static let backgroundTint = themeLightCyan
+        static let surface = Color.white
+        static let primary = themeTeal
+        static let secondary = themeLightSlate
+        static let textPrimary = themeDarkSlate
+        static let textSecondary = themeTeal
+    }
+    
+    // MARK: - Legacy Colors (Maintaining for compatibility before migration)
     static let softIndigo = Color(hex: "#6366F1")
     static let deepIndigo = Color(hex: "#4F46E5")
     static let softViolet = Color(hex: "#8B5CF6")
@@ -17,7 +34,7 @@ struct AppColors {
     static let softCyan = Color(hex: "#06B6D4")
     static let aquaBlue = Color(hex: "#22D3EE")
     
-    // MARK: - Accent Colors (used for highlights / CTAs)
+    // MARK: - Accent Colors
     static let neonBlue = Color(hex: "#3B82F6")
     static let electricPurple = Color(hex: "#A855F7")
     static let softPink = Color(hex: "#F472B6")
@@ -44,7 +61,7 @@ struct AppColors {
     static let disabledText = Color(hex: "#D1D5DB")
     static let inverseText = Color(hex: "#FFFFFF")
     
-    // MARK: - Status Colors (semantic)
+    // MARK: - Status Colors
     static let lightGreen = Color(hex: "#10B981")
     static let successGreen = Color(hex: "#22C55E")
     static let softAmber = Color(hex: "#F59E0B")
@@ -59,7 +76,7 @@ struct AppColors {
     static let dividerGray = Color(hex: "#D1D5DB")
     static let subtleBorder = Color(hex: "#F1F5F9")
     
-    // MARK: - Gradients (commonly used in Figma UIs)
+    // MARK: - Gradients
     static let gradientStart = Color(hex: "#6366F1")
     static let gradientMiddle = Color(hex: "#8B5CF6")
     static let gradientEnd = Color(hex: "#EC4899")

@@ -14,12 +14,18 @@ struct MessagesScreen: View {
     var body: some View {
         
         ZStack {
-            AppColors.softGray.ignoresSafeArea()
+            // MARK: - Background
+            LinearGradient(
+                colors: [AppColors.Theme.backgroundTint, AppColors.Theme.surface,AppColors.Theme.backgroundTint ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .ignoresSafeArea()
             
             VStack(alignment: .leading, spacing: 30) {
                 
                 Text("Messages")
-                    .foregroundStyle(AppColors.mediumGray)
+                    .foregroundStyle(AppColors.Theme.textPrimary)
                     .font(.custom("verdana", size: 30))
                     .bold()
                 
@@ -32,7 +38,7 @@ struct MessagesScreen: View {
                                 .background(AppColors.random().opacity(0.2))
                                 .font(.custom("verdana", size: 20))
                                 .bold()
-                                .foregroundStyle(AppColors.mediumGray)
+                                .foregroundStyle(AppColors.Theme.textPrimary)
                                 .clipShape(Circle())
                             
                             CardView(str: message)
@@ -75,14 +81,14 @@ private struct CardView: View {
         VStack {
             Text(str)
                 .frame(maxWidth: .infinity)
-                .foregroundStyle(AppColors.mediumGray)
+                .foregroundStyle(AppColors.Theme.textPrimary)
                 .font(.custom("verdana", size: 20))
                 .bold()
         }
         .frame(maxWidth: .infinity, minHeight: 80)
-        .background(AppColors.cardLight)
+        .background(AppColors.Theme.surface)
         .cornerRadius(16)
-        .shadow(color: AppColors.softGray, radius: 6)
+        .shadow(color: AppColors.Theme.secondary.opacity(0.5), radius: 6)
     }
 }
 

@@ -10,19 +10,12 @@ extension AppColors {
     
     static var allColors: [Color] {
         return [
-            softIndigo, deepIndigo,
-            softViolet, deepViolet,
-            softCyan, aquaBlue,
-            neonBlue, electricPurple,
-            softPink, coral,
-            lightGreen, successGreen,
-            softAmber, warningYellow,
-            softRed, errorRed,
-            softBlue, infoBlue
+            themeLightCyan, themeLightSlate,
+            themeTeal, themeDarkSlate
         ]
     }
     
     static func random() -> Color {
-        return allColors.randomElement() ?? .blue
+        return allColors.randomElement() ?? themeTeal
     }
 }

@@ -13,14 +13,18 @@ struct HomeScreen: View {
         ZStack {
             
             // MARK: - Background
-            AppColors.lightGray
-                .ignoresSafeArea()
+            LinearGradient(
+                colors: [AppColors.Theme.backgroundTint, AppColors.Theme.surface,AppColors.Theme.backgroundTint ],
+                startPoint: .topLeading,
+                endPoint: .bottomTrailing
+            )
+            .ignoresSafeArea()
             
             VStack(alignment: .leading, spacing: 20) {
                 
                 // MARK: - Vertical List Title
                 Text("Vertical List")
-                    .foregroundStyle(AppColors.softIndigo)
+                    .foregroundStyle(AppColors.Theme.textPrimary)
                     .font(.custom("verdana", size: 24))
                     .bold()
                 
@@ -29,23 +33,23 @@ struct HomeScreen: View {
                     Text(patient)
                         .padding()
                         .frame(maxWidth: .infinity, alignment: .leading)
-                        .foregroundStyle(AppColors.primaryText)
+                        .foregroundStyle(AppColors.Theme.textPrimary)
                         .font(.custom("verdana", size: 18))
-                        .background(AppColors.cardSoft)
+                        .background(AppColors.Theme.surface)
                         .cornerRadius(12)
                         .listRowBackground(Color.clear)
                         .listRowSeparator(.hidden)
                 }
                 .listStyle(.plain)
                 .scrollContentBackground(.hidden)
-                .background(AppColors.cardLight)
+                .background(AppColors.Theme.background)
                 .cornerRadius(20)
                 
                 // MARK: - Horizontal Section
                 VStack(alignment: .leading, spacing: 12) {
                     
                     Text("Horizontal List")
-                        .foregroundStyle(AppColors.softViolet)
+                        .foregroundStyle(AppColors.Theme.textPrimary)
                         .font(.custom("verdana", size: 24))
                         .bold()
                     
@@ -73,13 +77,14 @@ struct HomeScreen: View {
                     }
                 }
                 .padding()
-                .background(AppColors.cardLight)
+                .background(AppColors.Theme.surface)
                 .cornerRadius(20)
                 
                 Spacer()
             }
             .padding(.horizontal)
             .padding(.top, 80)
+            .padding(.bottom, 100)
             .ignoresSafeArea()
         }
         .ignoresSafeArea()

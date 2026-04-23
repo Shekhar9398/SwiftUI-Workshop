@@ -9,6 +9,37 @@ import SwiftUI
 
 struct AppColors {
     
+    static let royalPurple = Color(hex: "#6633E6")
+    static let vividViolet = Color(hex: "#994DFF")
+    
+    static let skyBlue = Color(hex: "#1A99E6")
+    static let deepOceanBlue = Color(hex: "#0066B3")
+    
+    static let coralRed = Color(hex: "#E64D66")
+    static let wineBerry = Color(hex: "#B31A4D")
+    
+    static let mintGreen = Color(hex: "#33B380")
+    static let deepTeal = Color(hex: "#1A8066")
+    
+    static let goldenSun = Color(hex: "#E6991A")
+    static let burntOrange = Color(hex: "#CC6600")
+    
+    // MARK: - Pure Whites
+    static let pureWhite = Color(hex: "#FFFFFF")
+    static let softWhite = Color(hex: "#F7F7F7")
+    
+    // MARK: - Warm Whites
+    static let warmCreamWhite = Color(hex: "#FFF6E9")
+    
+    // MARK: - Cool Whites
+    static let coolMistWhite = Color(hex: "#EEF4FF")
+    
+    // MARK: - Neutral Greys
+    static let lightCloudGrey = Color(hex: "#FAFAFA")
+    static let softFogGrey = Color(hex: "#F5F5F5")
+    static let paleSmokeGrey = Color(hex: "#F0F0F0")
+    static let mistGrey = Color(hex: "#EFEFEF")
+    
     // MARK: - Theme Colors
     static let themeLightCyan = Color(hex: "#B8E3E9")
     static let themeLightSlate = Color(hex: "#93B1B5")
@@ -41,7 +72,6 @@ struct AppColors {
     static let coral = Color(hex: "#FB7185")
     
     // MARK: - Backgrounds
-    static let pureWhite = Color(hex: "#FFFFFF")
     static let lightGray = Color(hex: "#F9FAFB")
     static let softGray = Color(hex: "#F3F4F6")
     static let mutedGray = Color(hex: "#E5E7EB")

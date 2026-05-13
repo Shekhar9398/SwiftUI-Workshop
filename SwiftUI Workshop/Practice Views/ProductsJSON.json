@@ -1,0 +1,94 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Wireless Headphones",
+      "category": "Electronics",
+      "price": 2499,
+      "currency": "INR",
+      "stock": 34,
+      "rating": 4.5
+    },
+    {
+      "id": 2,
+      "name": "Running Shoes",
+      "category": "Footwear",
+      "price": 3999,
+      "currency": "INR",
+      "stock": 20,
+      "rating": 4.2
+    },
+    {
+      "id": 3,
+      "name": "Smart Watch",
+      "category": "Electronics",
+      "price": 5999,
+      "currency": "INR",
+      "stock": 15,
+      "rating": 4.6
+    },
+    {
+      "id": 4,
+      "name": "Backpack",
+      "category": "Accessories",
+      "price": 1499,
+      "currency": "INR",
+      "stock": 50,
+      "rating": 4.1
+    },
+    {
+      "id": 5,
+      "name": "Bluetooth Speaker",
+      "category": "Electronics",
+      "price": 2999,
+      "currency": "INR",
+      "stock": 28,
+      "rating": 4.4
+    },
+    {
+      "id": 6,
+      "name": "Office Chair",
+      "category": "Furniture",
+      "price": 7499,
+      "currency": "INR",
+      "stock": 10,
+      "rating": 4.3
+    },
+    {
+      "id": 7,
+      "name": "Gaming Mouse",
+      "category": "Electronics",
+      "price": 1299,
+      "currency": "INR",
+      "stock": 60,
+      "rating": 4.7
+    },
+    {
+      "id": 8,
+      "name": "Water Bottle",
+      "category": "Lifestyle",
+      "price": 499,
+      "currency": "INR",
+      "stock": 100,
+      "rating": 4.0
+    },
+    {
+      "id": 9,
+      "name": "Yoga Mat",
+      "category": "Fitness",
+      "price": 999,
+      "currency": "INR",
+      "stock": 45,
+      "rating": 4.5
+    },
+    {
+      "id": 10,
+      "name": "Laptop Stand",
+      "category": "Accessories",
+      "price": 1999,
+      "currency": "INR",
+      "stock": 25,
+      "rating": 4.6
+    }
+  ]
+}

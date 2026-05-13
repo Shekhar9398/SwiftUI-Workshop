@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct HomeScreen: View {
+    @Environment(\.dismiss) private var dismiss
+
+    let usernameKey = "com.user.usernamekey"
+    let passwordKey = "com.user.passwordKey"
+    
     
     var body: some View {
         
@@ -18,6 +23,24 @@ struct HomeScreen: View {
                 .ignoresSafeArea()
             
             VStack(alignment: .leading, spacing: 24) {
+                //back button
+                    Button{
+                        clearLoginSession()
+                        dismiss()
+                    }label: {
+                        HStack {
+                            Image(systemName: "power.circle.fill")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                                .foregroundStyle(.red)
+                            
+                            Text("Log Out")
+                                .foregroundStyle(.gray)
+                                .font(.custom("futura", size: 12))
+                        }
+                    }
+                    .padding()
+                
                 
                 // MARK: - Header
                 VStack(alignment: .leading, spacing: 8) {
@@ -104,6 +127,14 @@ struct HomeScreen: View {
             }
             .padding()
         }
+        .navigationBarBackButtonHidden()
+    }
+}
+
+extension HomeScreen {
+    private func clearLoginSession(){
+        UserDefaults.standard.removeObject(forKey: usernameKey)
+        UserDefaults.standard.removeObject(forKey: passwordKey)
     }
 }
 

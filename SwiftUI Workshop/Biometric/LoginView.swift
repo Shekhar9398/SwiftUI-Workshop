@@ -6,11 +6,15 @@
 //
 
 import SwiftUI
+import LocalAuthentication
 
 struct LoginView: View {
     @State private var username: String = ""
     @State private var password: String = ""
     @State private var navigateToHomeScreen: Bool = false
+    
+    let usernameKey = "com.user.usernamekey"
+    let passwordKey = "com.user.passwordKey"
     
     var body: some View {
         NavigationStack {
@@ -42,9 +46,6 @@ struct LoginView: View {
                             )
                             .cornerRadius(14)
                             .font(.custom("futura", size: 20))
-                            .onSubmit {
-                                saveToUserDefaults(text: username , keyString: "user.usernamekey")
-                            }
                     }
                     .padding(.bottom)
                     
@@ -66,14 +67,11 @@ struct LoginView: View {
                             )
                             .cornerRadius(14)
                             .font(.custom("futura", size: 20))
-                            .onSubmit {
-                                saveToUserDefaults(text: password, keyString: "user.passwordkey")
-                            }
                     }
                     
                     //login button
                     Button {
-                        navigateToHomeScreen = isCredsCorrect()
+                        loginUser()
                     }label: {
                         Text("Login")
                             .frame(maxWidth: 200)
@@ -89,29 +87,65 @@ struct LoginView: View {
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
             }
             .ignoresSafeArea()
+            .onAppear{
+                checkSavedSession()
+            }
             .navigationDestination(isPresented: $navigateToHomeScreen) {
                 HomeScreen()
             }
+            
         }
     }
     
+}
+
+extension LoginView {
     ///MARK:- Methods
-    private func saveToUserDefaults(text: String, keyString: String){
-        UserDefaults.standard.set(text, forKey: keyString)
-    }
-    
-    private func isCredsCorrect() -> Bool {
+    private func loginUser(){
         let creds = Credentials()
         
         if username == creds.username && password == creds.password {
-            return true
+            saveSession()
+            navigateToHomeScreen = true
+        }
+    }
+    
+    private func saveSession(){
+        UserDefaults.standard.set(username, forKey: usernameKey)
+        UserDefaults.standard.set(password, forKey: passwordKey)
+    }
+    
+    private func checkSavedSession(){
+        let username = UserDefaults.standard.string(forKey: usernameKey)
+        let password = UserDefaults.standard.string(forKey: passwordKey)
+        
+        if username != nil && password != nil {
+            authenticateWithBiometrics()
+        }
+    }
+    
+    private func authenticateWithBiometrics(){
+        let context = LAContext()
+        var error: NSError?
+        
+        guard context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) else {
+            print("Cant evaluate policy")
+            return
         }
         
-        return false
+        Task {
+            
+            do {
+                let success = try await context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: "Log In")
+                
+                if success {
+                    navigateToHomeScreen = true
+                }
+                
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        }
+        
     }
-
-}
-
-#Preview {
-    LoginView()
 }
